@@ -1,0 +1,56 @@
+<html lang="hu">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css"/>
+    <link rel="stylesheet" href="styles/hybriddemo.css"/>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/hybriddemo.js"></script>
+</head>
+<body>
+<div>
+    <div id="contacts" class="media">
+        <img class="media-image" src="img/Phone-icon.png"/>
+        <div class="media-body">
+            <h4>${contacts_button_phone}</h4>
+        </div>
+    </div>
+    <div id="email" class="media">
+        <img class="media-image" src="img/email-flat.png"/>
+        <div class="media-body">
+            <h4>${contacts_button_email}</h4>
+        </div>
+    </div>
+    <div id="facebook" class="media">
+        <img class="media-image" src="img/facebook-512.png"/>
+        <div class="media-body">
+            <h4>${contacts_button_facebook}</h4>
+        </div>
+    </div>
+    <div id="twitter" class="media">
+        <img class="media-image" src="img/twitter-128.png"/>
+        <div class="media-body">
+            <h4>${contacts_button_twitter}</h4>
+        </div>
+    </div>
+</div>
+<div id="transition-element"/>
+<script>
+    $('#contacts').click(function() {
+        window.location = 'tel:555-555-5555';
+    });
+    $('#email').click(function() {
+        window.location = 'mailto:support@magicbank.com';
+    });
+    $('#facebook').click(function() {
+        window.location = 'https://hu-hu.facebook.com/unimiskolc/';
+    });
+    $('#twitter').click(function() {
+        window.location = 'https://twitter.com/unimiskolc';
+    });
+</script>
+</body>
+</html>

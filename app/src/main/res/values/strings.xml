@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">HybridDemo</string>
+
+    <string name="loading_in_progress">Adatok betöltése…</string>
+    <string name="loading_error">Hiba lépett fel adatbetöltés közben.</string>
+
+    <string name="login_title">Bejelentkezés</string>
+    <string name="login_label_user_name">Felhasználó név:</string>
+    <string name="login_label_password">Jelszó:</string>
+    <string name="login_button_login">Belépés</string>
+
+    <string name="welcome_title">MagicBank Mobile</string>
+    <string name="welcome_button_accounts">Számlák</string>
+    <string name="welcome_button_atm">ATM keresés</string>
+    <string name="welcome_button_contacts">Kapcsolat</string>
+
+    <string name="atm_search_title">ATM keresés</string>
+    <string name="accounts_title">Számlák</string>
+    <string name="transactions_title">Tranzakciók</string>
+
+    <string name="contacts_title">Kapcsolat</string>
+    <string name="contacts_button_phone">Általános banki információk</string>
+    <string name="contacts_button_email">E-mail</string>
+    <string name="contacts_button_facebook">Facebook</string>
+    <string name="contacts_button_twitter">Twitter</string>
+</resources>

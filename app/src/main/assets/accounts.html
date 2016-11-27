@@ -1,0 +1,47 @@
+<html lang="hu">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css"/>
+    <link rel="stylesheet" href="styles/hybriddemo.css"/>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/hybriddemo.js"></script>
+</head>
+<body>
+<div id="account-container" class="demo-section k-content">
+</div>
+<div id="transition-element"/>
+<script>
+    $(document).ready(function() {
+        android.callService('/account', null);
+    });
+
+    function onServiceResponse(path, response) {
+        var container = $('#account-container');
+
+        var accounts = response.items;
+        for (var i = 0; i < accounts.length; i++) {
+            var account = accounts[i];
+            var accountButton = $.parseHTML(buildHtmlForAccount(account));
+            $(accountButton).click(function() {
+                android.navigateTo('transactions', '{"accountId": ' + account.id + '}');
+            });
+            container.append(accountButton);
+        }
+    }
+
+    function buildHtmlForAccount(account) {
+        return '<div class="media">' +
+                '<img class="media-image" src="img/account-icon.png"/>' +
+                    '<div class="media-body">' +
+                        '<h4>' + account.name + '</h4>' +
+                        '<p>' + kendo.toString(account.balance, 'n0') + ' ' + account.currency + '</p>'
+                    '</div>' +
+                '</div>';
+    }
+</script>
+</body>
+</html>

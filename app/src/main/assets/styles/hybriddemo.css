@@ -1,0 +1,37 @@
+.media {
+    display: flex;
+    align-items: center;
+    padding: 8 8px;
+    margin-bottom: 6px;
+    background: #eee;
+}
+
+.media:active {
+    background: #ddd;
+}
+
+.media-image {
+    margin-right: 10px;
+    width: 32px;
+}
+
+.media-body {
+    overflow: auto;
+}
+
+.media-body h4 {
+    margin: 0;
+}
+
+.media-body p {
+    margin: 2px 0;
+}
+
+#transition-element {
+    transform: translate3d(0, 0, 0);
+}
+
+#transition-element.finish {
+    transform: translate3d(0, 0, 1px);
+    transition-duration: 1ms;
+}

@@ -1,0 +1,67 @@
+<html lang="hu">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css"/>
+    <link rel="stylesheet" href="styles/hybriddemo.css"/>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/hybriddemo.js"></script>
+    <style>
+                #field_list {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #field_list li {
+                    list-style: none;
+                    padding-bottom: .7em;
+                    text-align: left;
+                }
+
+                #field_list input {
+                    width: 100%
+                }
+
+                #field_list label {
+                    display: block;
+                    padding-bottom: .3em;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    color: #444;
+                }
+
+    </style>
+</head>
+<body>
+<div>
+    <form id="login">
+        <ul id="field_list">
+            <li>
+                <label for="username">${login_label_user_name}</label>
+                <input id="username" class="k-textbox" type="text"/>
+            </li>
+            <li>
+                <label for="password">${login_label_password}</label>
+                <input id="password" class="k-textbox" type="password"/>
+            </li>
+        </ul>
+        <button class="k-button k-primary" type="submit">${login_button_login}</button>
+    </form>
+</div>
+<div id="transition-element"/>
+<script>
+    $('#login').submit(function(event) {
+        android.callService('/login', JSON.stringify({"username": $('#username').val(), "password": $('#password').val()}));
+        event.preventDefault();
+    });
+
+    function onServiceResponse() {
+        android.navigateTo('welcome', null);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html lang="hu">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css"/>
+    <link rel="stylesheet" href="styles/hybriddemo.css"/>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/hybriddemo.js"></script>
+</head>
+<body>
+<div id="transaction_container" class="demo-section k-content">
+</div>
+<div id="transition-element"/>
+<script>
+    $(document).ready(function() {
+        android.requestExtras();
+    });
+
+    function takeExtras(extras) {
+        var accountId = extras.accountId;
+        android.callService('/transaction', JSON.stringify({"accountId": accountId}));
+    }
+
+    function onServiceResponse(path, response) {
+        var container = $('#transaction_container');
+
+        var transactions = response.items;
+        for (var i = 0; i < transactions.length; i++) {
+            var transactionButton = $.parseHTML(buildHtmlForTransaction(transactions[i]));
+            container.append(transactionButton);
+        }
+    }
+
+    function buildHtmlForTransaction(transaction) {
+        return '<div class="media">' +
+                   '<img class="media-image" src="img/' + (transaction.amount < 0 ? 'negative.png' : 'positive.png') + '"/>' +
+                    '<div class="media-body">' +
+                        '<h4>' + transaction.partner + '</h4>' +
+                        '<p>' + kendo.toString(transaction.amount, 'n0') + ' ' + transaction.currency + '</p>'
+                    '</div>' +
+                '</div>';
+    }
+</script>
+</body>
+</html>
